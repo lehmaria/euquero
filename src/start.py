@@ -1,5 +1,11 @@
 from flask import Flask
+from sqlalchemy import create_engine 
+
+# inicia o projeto flask
 app = Flask(__name__)
+
+# declara a conexao com o banco 
+engine = create_engine('sqlite:///:memory:', echo=True)
 
 
 # define a rota
