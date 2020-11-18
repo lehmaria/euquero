@@ -1,5 +1,6 @@
 from sqlalchemy import Column, Integer, String
 from sqlalchemy.ext.declarative import declarative_base
+import json
 
 # base é tipo uma planilha vazia no Excel. Essa função declara essa "planilha vazia"
 Base = declarative_base()
@@ -12,6 +13,13 @@ class User(Base):
     password = Column(String)
     cpf = Column(String)
 
-    def __repr__(self):
-        return f'User {self.id}, name:{self.name}, email:{self.email}, cpf:{self.cpf}'
+    def __repr__(self): 
+        user = {
+            'id': self.id,
+            'email': self.email,
+            'name': self.name,
+            'cpf': self.cpf,
+        }
+        return json.dumps({'user':user})
+        
 
